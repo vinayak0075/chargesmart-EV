@@ -6,7 +6,7 @@ SECRET_KEY = 'django-insecure-change-this-later'
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -89,3 +89,4 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+STATIC_URL = BASE_DIR / 'staticfiles'
