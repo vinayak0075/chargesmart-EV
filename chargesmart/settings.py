@@ -36,7 +36,10 @@ ROOT_URLCONF = 'chargesmart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+
+        # FIXED
+        'DIRS': [str(BASE_DIR / 'templates')],
+
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -53,7 +56,9 @@ WSGI_APPLICATION = 'chargesmart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+
+        # FIXED
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -67,16 +72,21 @@ USE_I18N = True
 
 USE_TZ = True
 
+# STATIC FILES
+
 STATIC_URL = '/static/'
 
+# FIXED
 STATICFILES_DIRS = [
-    BASE_DIR / "static"
+    str(BASE_DIR / "static")
 ]
+
+# FIXED
+STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'chargesmart@example.com'
+# EMAIL SETTINGS
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -89,4 +99,3 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-STATIC_URL = BASE_DIR / 'staticfiles'
